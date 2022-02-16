@@ -10,11 +10,12 @@
 	font-family: Arial, Helvetica, san-serif;
 	font-size: 30px;
 	padding-left: 20px;
+	font-weight:normal;
 }
 
  p {
 	font-family:Arial, Helvetica, san-serif;
 	font-size: 20px;
 	padding-left: 10px;
-	line-height:0.8;
+	line-height:1.0;
 }
