@@ -6,8 +6,15 @@
 	text-align: center;
 }
 
-p{
+.subtitulo{
+	font-family: Arial, Helvetica, san-serif;
+	font-size: 30px;
+	padding-left: 20px;
+}
+
+ p {
 	font-family:Arial, Helvetica, san-serif;
 	font-size: 20px;
-	padding-right: 10px;
+	padding-left: 10px;
+	line-height:0.9;
 }
