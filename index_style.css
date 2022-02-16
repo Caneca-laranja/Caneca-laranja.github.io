@@ -1,6 +1,13 @@
-body{
-	background-color: lightblue;
-	}
+
 .titulo{
 	font-family: Arial, Helvetica, san-serif;
+	font-size:40px;
+	text-decoration-line: overline;	
+	text-align: center;
+}
+
+.p{
+	font-family:Arial, Helvetica, san-serif;
+	font-size: 20px;
+	padding-right: 10px;
 }
