@@ -1,16 +1,18 @@
 
 .titulo{
-	font-family: Arial, Helvetica, san-serif;
 	font-size:40px;
 	text-decoration-line: overline;	
 	text-align: center;
 }
 
 .subtitulo{
-	font-family: Arial, Helvetica, san-serif;
 	font-size: 30px;
 	padding-left: 20px;
 	font-weight:normal;
+}
+
+.subsubtitulo{
+	font-size:15px;
 }
 
  p {
