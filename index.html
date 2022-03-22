@@ -2,6 +2,10 @@
 <html>
 <head> 
 <link rel = "stylesheet" href="index_style.css">
+<link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
@@ -72,12 +76,12 @@ Motivo:Parecia interessante, também é utilizado bastante hoje em dia, principa
 
 <p>Inclua as referências usadas na pesquisa.</p>
 <p> referências:</p>
-<p link= 'https://images.aws.nestle.recipes/resized/40b25559b85b265e885f55ec7c1e4d04_torta-lim%C3%A3o-receitas-nestle_1200_600.jpg'>Imagem</p>
-<p link='https://www.kaggle.com/code/sanikamal/image-processing-with-scikit-image/notebook'>https://www.kaggle.com/code/sanikamal/image-processing-with-scikit-image/notebook</p>
-<p link='https://scikit-image.org/docs/stable/auto_examples/color_exposure/plot_local_equalize.html'>https://scikit-image.org/docs/stable/auto_examples/color_exposure/plot_local_equalize.html</p>
-<p link='https://acervolima.com/segmentacao-de-imagens-usando-o-modulo-scikit-image-do-python/'>https://acervolima.com/segmentacao-de-imagens-usando-o-modulo-scikit-image-do-python/</p>
+<a href='https://images.aws.nestle.recipes/resized/40b25559b85b265e885f55ec7c1e4d04_torta-lim%C3%A3o-receitas-nestle_1200_600.jpg'>Imagem</a>
+<a href='https://www.kaggle.com/code/sanikamal/image-processing-with-scikit-image/notebook'>https://www.kaggle.com/code/sanikamal/image-processing-with-scikit-image/notebook</a>
+<a href='https://scikit-image.org/docs/stable/auto_examples/color_exposure/plot_local_equalize.html'>https://scikit-image.org/docs/stable/auto_examples/color_exposure/plot_local_equalize.html</a>
+<a href='https://acervolima.com/segmentacao-de-imagens-usando-o-modulo-scikit-image-do-python/'>https://acervolima.com/segmentacao-de-imagens-usando-o-modulo-scikit-image-do-python/</a>
 <br><br>
-<code>
+<pre><code>
 #1
 import matplotlib.pyplot as plt
 import numpy as np
@@ -90,7 +94,6 @@ img = plt.imread("foto.jpg")
 #limiarização com 0.7
 img_res = (img_gray > 0.7)*1
 plt.imshow(img_res, cmap="gray")
-plt.show()
-</code>
+plt.show()</code></pre>
 </body>
 </html>
