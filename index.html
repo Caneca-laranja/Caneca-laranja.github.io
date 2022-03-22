@@ -58,6 +58,39 @@ Motivo:Parecia interessante, também é utilizado bastante hoje em dia, principa
 <p> Importante: No papel se encontra, o código usado e exemplos utilizando placas</p>
 <img src = "tela_placa_carro.png" alt="teste">
 <p>Imagem pega de https://professor.luzerna.ifc.edu.br/ricardo-antonello/wp-content/uploads/sites/8/2016/04/IDENTIFICA%c3%87%c3%83O-AUTOM%c3%81TICA-DE-PLACA-DE-VE%c3%8dCULOS-ATRAV%c3%89S-DE-PROCESSAMENTO-DE-IMAGEM-E-VIS%c3%83O-COMPUTACIONAL-.pdf</p>
+<br><br><br><br>
+<p class = "subtitulo">Aula 6, eu acho </p>
+<p>Com base no material disponível no Moodle (slides sobre “Transformações de Intensidade e Filtragem Espacial”, em particular, os tópico de transformação de intensidade e de processamento de histograma – slides 13 a 57) e referências adicionais, faça uma pesquisa sobre como é possível: </p>
 
+<p>1.Realizar a limiarização de uma imagem usando Python e scikit-image.</p>
+<p>2.Plotar o histograma de uma imagem tons de cinza usando Python, scikit-image e matplotlib.</p>
+<p>3.Plotar o histograma de uma imagem colorida (um histograma por canal de cor) usando Python, scikit-image e matplotlib.</p>
+<p>4.Equalizar o histograma de uma imagem usando Python e scikit-image.</p>
+<p>5.Detectar (concluir) que uma foto está subexposta ou que está superexposta, analisando o histograma.</p>
+<p>6.Detectar (concluir) se uma imagem está com baixo contraste ou alto contraste, analisando o histograma.</p>
+<p>Para cada item acima, inclua um código que exemplifica cada tarefa e uma imagem resultante do código (por exemplo, no item 2, a imagem deve conter a imagem em tons de cinza e o histograma da imagem).</p>
+
+<p>Inclua as referências usadas na pesquisa.</p>
+<p> referências:</p>
+<p link= 'https://images.aws.nestle.recipes/resized/40b25559b85b265e885f55ec7c1e4d04_torta-lim%C3%A3o-receitas-nestle_1200_600.jpg'>Imagem</p>
+<p link='https://www.kaggle.com/code/sanikamal/image-processing-with-scikit-image/notebook'>https://www.kaggle.com/code/sanikamal/image-processing-with-scikit-image/notebook</p>
+<p link='https://scikit-image.org/docs/stable/auto_examples/color_exposure/plot_local_equalize.html'>https://scikit-image.org/docs/stable/auto_examples/color_exposure/plot_local_equalize.html</p>
+<p link='https://acervolima.com/segmentacao-de-imagens-usando-o-modulo-scikit-image-do-python/'>https://acervolima.com/segmentacao-de-imagens-usando-o-modulo-scikit-image-do-python/</p>
+<br><br>
+<code>
+#1
+import matplotlib.pyplot as plt
+import numpy as np
+from skimage import data, img_as_float
+from skimage.color import rgb2gray
+from skimage.exposure import equalize_hist, cumulative_distribution
+
+img = plt.imread("foto.jpg")
+
+#limiarização com 0.7
+img_res = (img_gray > 0.7)*1
+plt.imshow(img_res, cmap="gray")
+plt.show()
+</code>
 </body>
 </html>
