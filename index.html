@@ -100,7 +100,7 @@ img_gray = rgb2gray(img)
 plt.imshow(img_gray, cmap="gray")
 plt.show()
 </code></pre> 
-<img src="foto_cinza.png"><br>
+<img src="images/foto_cinza.png"><br>
 <p>Foto cinza</p>
 <p>Limiarização</p>
 <p>*Nota: a foto tem que estar em preto e branco</p>
@@ -111,7 +111,7 @@ img_res = (img_gray > 0.7)*1
 plt.imshow(img_res, cmap="gray")
 plt.show()</code></pre>
 
-<img src= "limear.png">
+<img src= "images/limear.png">
 <p>foto após limiarização</p><br>
 <br><br>
 
@@ -121,7 +121,7 @@ plt.show()</code></pre>
 plt.hist(img_gray.ravel())
 plt.show()
 </code></pre>
-<img src= "Figure_1.png">
+<img src= "images/Figure_1.png">
 <p>Histograma da figura cinza</p><br>
 <br><br>
 
@@ -140,7 +140,7 @@ plt.hist(blue.ravel(),color='blue',alpha=0.5, label='Azul')
 plt.legend(loc='upper right')
 plt.show()
 </code></pre>
-<img src= "Figure_2.png">
+<img src= "images/Figure_2.png">
 <p>Histograma da figura colorida e separada por canais RGB</p><br>
 <br><br>
 <p>*Nota: a foto está em preto e branco</p>
@@ -153,18 +153,22 @@ plt.hist(img_eq.ravel())
 plt.show()
 
 </code></pre>
-<img src= "Figure_3.png">
+<img src= "images/Figure_3.png">
 <p>Histograma da figura equalizada</p><br>
 <br><br>
 
 <p>5.</p> 
 <p>para detectar se uma foto está subexposta ou sobrexposta, pode se verificar o histograma da imagem em preto e branco, se ela for subexposta o histograma estará com uma incidência maior no lado esquerdo do gráfico (valor 0), se ela for superexposta ela terá uma incidência maior no lado direito (valor 1)</p>
 <p> Exemplo:</p>
-<img src="exposure.jpg"><br>
+<img src="images/exposure.jpg"><br>
 <a href= 'https://www.designerd.com.br/wp-content/uploads/2019/09/para-que-serve-e-como-utilizar-o-histograma-na-hora-de-tirar-uma-foto-1.jpg'>foto retirada de</a>
 <br><br><br>
 
 <p>6.</p> 
+<p>para detectar se uma foto está com alto contraste ou baixo contraste, pode se verificar o histograma da imagem, se ela for contrastante o gráfico parecerá um U, ou seja,haverá uma incidência maior nos cantos da imagem (0 e 1), se ela tiver pouco contraste haverá pouca incidência nos cantos do gráfico (0 e 1)</p>
+<p>Exemplo:</p>
+<img src="images/contraste.jpg"><br>
+<a href='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnGfIpyoWzER1ytHBxJZTOHJTP9ieaJ84Yjg&usqp=CAU'> https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnGfIpyoWzER1ytHBxJZTOHJTP9ieaJ84Yjg&usqp=CAU</a><br>
 
 </body>
 </html>
