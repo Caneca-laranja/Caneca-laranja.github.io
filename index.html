@@ -2,6 +2,7 @@
 <html>
 <head> 
 <link rel = "stylesheet" href="index_style.css">
+<link rel = "stylesheet" href="index_style.">
 <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
@@ -60,9 +61,10 @@ Motivo:Parecia interessante, também é utilizado bastante hoje em dia, principa
 <p>Como o filtro ajudou: Foi utilizado o Blur gaussaniano para melhorar a imagem</p>
 <p> site/ papel: https://professor.luzerna.ifc.edu.br/ricardo-antonello/wp-content/uploads/sites/8/2016/04/IDENTIFICA%c3%87%c3%83O-AUTOM%c3%81TICA-DE-PLACA-DE-VE%c3%8dCULOS-ATRAV%c3%89S-DE-PROCESSAMENTO-DE-IMAGEM-E-VIS%c3%83O-COMPUTACIONAL-.pdf</p>
 <p> Importante: No papel se encontra, o código usado e exemplos utilizando placas</p>
-<img src = "tela_placa_carro.png" alt="teste">
+<img src = "tela_placa_carro.png" >
 <p>Imagem pega de https://professor.luzerna.ifc.edu.br/ricardo-antonello/wp-content/uploads/sites/8/2016/04/IDENTIFICA%c3%87%c3%83O-AUTOM%c3%81TICA-DE-PLACA-DE-VE%c3%8dCULOS-ATRAV%c3%89S-DE-PROCESSAMENTO-DE-IMAGEM-E-VIS%c3%83O-COMPUTACIONAL-.pdf</p>
 <br><br><br><br>
+
 <p class = "subtitulo">Aula 6, eu acho </p>
 <p>Com base no material disponível no Moodle (slides sobre “Transformações de Intensidade e Filtragem Espacial”, em particular, os tópico de transformação de intensidade e de processamento de histograma – slides 13 a 57) e referências adicionais, faça uma pesquisa sobre como é possível: </p>
 
@@ -76,13 +78,17 @@ Motivo:Parecia interessante, também é utilizado bastante hoje em dia, principa
 
 <p>Inclua as referências usadas na pesquisa.</p>
 <p> referências:</p>
-<a href='https://images.aws.nestle.recipes/resized/40b25559b85b265e885f55ec7c1e4d04_torta-lim%C3%A3o-receitas-nestle_1200_600.jpg'>Imagem</a>
-<a href='https://www.kaggle.com/code/sanikamal/image-processing-with-scikit-image/notebook'>https://www.kaggle.com/code/sanikamal/image-processing-with-scikit-image/notebook</a>
-<a href='https://scikit-image.org/docs/stable/auto_examples/color_exposure/plot_local_equalize.html'>https://scikit-image.org/docs/stable/auto_examples/color_exposure/plot_local_equalize.html</a>
-<a href='https://acervolima.com/segmentacao-de-imagens-usando-o-modulo-scikit-image-do-python/'>https://acervolima.com/segmentacao-de-imagens-usando-o-modulo-scikit-image-do-python/</a>
+<a href='https://images.aws.nestle.recipes/resized/40b25559b85b265e885f55ec7c1e4d04_torta-lim%C3%A3o-receitas-nestle_1200_600.jpg'>Imagem</a><br>
+<a href='https://www.kaggle.com/code/sanikamal/image-processing-with-scikit-image/notebook'>https://www.kaggle.com/code/sanikamal/image-processing-with-scikit-image/notebook</a><br>
+<a href='https://scikit-image.org/docs/stable/auto_examples/color_exposure/plot_local_equalize.html'>https://scikit-image.org/docs/stable/auto_examples/color_exposure/plot_local_equalize.html</a><br>
+<a href='https://acervolima.com/segmentacao-de-imagens-usando-o-modulo-scikit-image-do-python/'>https://acervolima.com/segmentacao-de-imagens-usando-o-modulo-scikit-image-do-python/</a><br>
+<a href='https://www.tecmundo.com.br/internet/8616-fotografia-como-funcionam-os-histogramas.htm'>https://www.tecmundo.com.br/internet/8616-fotografia-como-funcionam-os-histogramas.htm</a><br>
 <br><br>
+<img src= "foto.jpg"><br>
+<p>Foto original</p>
+
+<p>código para foto cinza</p>
 <pre><code>
-#1
 import matplotlib.pyplot as plt
 import numpy as np
 from skimage import data, img_as_float
@@ -90,10 +96,75 @@ from skimage.color import rgb2gray
 from skimage.exposure import equalize_hist, cumulative_distribution
 
 img = plt.imread("foto.jpg")
-
+img_gray = rgb2gray(img)
+plt.imshow(img_gray, cmap="gray")
+plt.show()
+</code></pre> 
+<img src="foto_cinza.png"><br>
+<p>Foto cinza</p>
+<p>Limiarização</p>
+<p>*Nota: a foto tem que estar em preto e branco</p>
+<pre><code>
+#1
 #limiarização com 0.7
 img_res = (img_gray > 0.7)*1
 plt.imshow(img_res, cmap="gray")
 plt.show()</code></pre>
+
+<img src= "limear.png">
+<p>foto após limiarização</p><br>
+<br><br>
+
+<pre><code>
+#2
+#histograma imagem cinza
+plt.hist(img_gray.ravel())
+plt.show()
+</code></pre>
+<img src= "Figure_1.png">
+<p>Histograma da figura cinza</p><br>
+<br><br>
+
+
+<pre><code>
+#3
+#histograma imagem colorida e por canal
+
+red = img[:,:,0]
+green = img[:,:,1]
+blue = img[:,:,2]
+
+plt.hist(red.ravel(),color='red',alpha=0.4, label='Vermelho')
+plt.hist(green.ravel(),color='green', alpha=0.2, label='Verde')
+plt.hist(blue.ravel(),color='blue',alpha=0.5, label='Azul')
+plt.legend(loc='upper right')
+plt.show()
+</code></pre>
+<img src= "Figure_2.png">
+<p>Histograma da figura colorida e separada por canais RGB</p><br>
+<br><br>
+<p>*Nota: a foto está em preto e branco</p>
+<pre><code>
+#4
+#histograma imagem equalizado
+img_eq = equalize_hist(img_gray)
+
+plt.hist(img_eq.ravel())
+plt.show()
+
+</code></pre>
+<img src= "Figure_3.png">
+<p>Histograma da figura equalizada</p><br>
+<br><br>
+
+<p>5.</p> 
+<p>para detectar se uma foto está subexposta ou sobrexposta, pode se verificar o histograma da imagem em preto e branco, se ela for subexposta o histograma estará com uma incidência maior no lado esquerdo do gráfico (valor 0), se ela for superexposta ela terá uma incidência maior no lado direito (valor 1)</p>
+<p> Exemplo:</p>
+<img src="exposure.jpg"><br>
+<a href= 'https://www.designerd.com.br/wp-content/uploads/2019/09/para-que-serve-e-como-utilizar-o-histograma-na-hora-de-tirar-uma-foto-1.jpg'>foto retirada de</a>
+<br><br><br>
+
+<p>6.</p> 
+
 </body>
 </html>
