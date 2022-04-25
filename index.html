@@ -170,5 +170,59 @@ plt.show()
 <img src="images/contraste.jpg"><br>
 <a href='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnGfIpyoWzER1ytHBxJZTOHJTP9ieaJ84Yjg&usqp=CAU'> https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnGfIpyoWzER1ytHBxJZTOHJTP9ieaJ84Yjg&usqp=CAU</a><br>
 
+<br><br><br><br>
+<p class = "subtitulo">Aula 10 eu acho </p>
+<br>
+<p>Faça uma pesquisa sobre como é possível aplicar os operadores de gradiente Roberts, Prewitt e Sobel para detectar bordas em uma imagem, usando a linguagem Python.</p>
+
+<p>Para cada operador, inclua o trecho de código que exemplifica a operação e um conjunto de quatro imagens (para cada operação) mostrando a imagem original, a imagem resultante da operação na horizontal, a imagem resultante da operação na vertical e a imagem representando a magnitude do gradiente.</p>  
+
+<p>Inclua as referências usadas na pesquisa.</p>
+<br><br>
+<p class = "subtitulo">Gradiente Roberts</p>
+<p> Algoritmo de detecção de borda, sendo o mais antigo e simples, ele utiliza duas matrizes 2x2 para encontrar variações em X e Y</p>
+<p> Algoritmo: |G| = raiz quadrada de((Gx^2) + (Gy^2)) </p>
+<p> vantagens : </p>
+<p> - Rápido </p>
+<p> - Simples de implementar </p>
+<br>
+<p> Desvantagens: </p>
+<p> - Sensível ao ruído </p>
+<br>
+<p>Código:</p>
+<pre><code>
+import cv2
+import numpy as np
+from scipy import ndimage
+from skimage import data
+import matplotlib.pyplot as plt
+
+#matrizes
+robert_X = np.array( [[1,0],[0,-1]] )
+robert_Y = np.array( [[0,1],[-1,0]] )
+
+#imagem
+img = data.camera()
+
+#algoritimo
+vertical = ndimage.convolve( img, robert_X )
+horizontal = ndimage.convolve( img, robert_Y )
+final_img = np.sqrt( np.square(horizontal) + np.square(vertical))
+
+#imprime as imagens
+fig = plt.figure(figsize=(5, 5))
+fig.add_subplot(1, 2, 1)
+plt.imshow(img,cmap='gray')
+fig.add_subplot(1, 2, 2)
+plt.imshow(final_img,cmap='gray')
+plt.show()
+</code></pre>
+<br>
+<p>Resultado</p>
+<img src="images/aula_10_robert.jpg"><br>
+<p>referências:</p>
+<a href='https://lapix.ufsc.br/metodos-no-domino-do-espaco-2-deteccao-de-bordas/'> https://lapix.ufsc.br/metodos-no-domino-do-espaco-2-deteccao-de-bordas/</a><br>
+<a href='https://homepages.inf.ed.ac.uk/rbf/HIPR2/roberts.htm'> https://homepages.inf.ed.ac.uk/rbf/HIPR2/roberts.htm</a><br>
+<a href='https://www.geeksforgeeks.org/python-opencv-roberts-edge-detection/'> https://www.geeksforgeeks.org/python-opencv-roberts-edge-detection/</a><br>
 </body>
 </html>
