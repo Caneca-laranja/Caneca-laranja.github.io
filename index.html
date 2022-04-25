@@ -178,6 +178,7 @@ plt.show()
 <p>Para cada operador, inclua o trecho de código que exemplifica a operação e um conjunto de quatro imagens (para cada operação) mostrando a imagem original, a imagem resultante da operação na horizontal, a imagem resultante da operação na vertical e a imagem representando a magnitude do gradiente.</p>  
 
 <p>Inclua as referências usadas na pesquisa.</p>
+<a href='https://scikit-image.org/docs/stable/api/skimage.data.html'> imagens do skimage</a><br>
 <br><br>
 <p class = "subtitulo">Gradiente Roberts</p>
 <p> Algoritmo de detecção de borda, sendo o mais antigo e simples, ele utiliza duas matrizes 2x2 para encontrar variações em X e Y</p>
@@ -226,6 +227,49 @@ plt.show()
 <p>referências:</p>
 <a href='https://lapix.ufsc.br/metodos-no-domino-do-espaco-2-deteccao-de-bordas/'> https://lapix.ufsc.br/metodos-no-domino-do-espaco-2-deteccao-de-bordas/</a><br>
 <a href='https://homepages.inf.ed.ac.uk/rbf/HIPR2/roberts.htm'> https://homepages.inf.ed.ac.uk/rbf/HIPR2/roberts.htm</a><br>
-<a href='https://www.geeksforgeeks.org/python-opencv-roberts-edge-detection/'> https://www.geeksforgeeks.org/python-opencv-roberts-edge-detection/</a><br>
+<a href='https://www.geeksforgeeks.org/python-opencv-roberts-edge-detection/'> https://www.geeksforgeeks.org/python-opencv-roberts-edge-detection/</a><br><br>
+<p class = "subtitulo">Gradiente Sobel</p>
+<p> Algoritimo de detecção de borda, parecido com o Roberts, ele utiliza, normalmente, 2 matrizes 3x3</p>
+<p> Algoritimo: |G| = |Gx| + |Gy|</p>
+<p> Vantagens: </p>
+<p>- Por usar uma máscara 3x3 ele é mais preciso que o Roberts, ou seja, ele sofre menos com os ruídos na imagem</p>
+<p> Desvantagens:</p>
+<p>- Por utilizar uma máscara maior, ele é mais complexo</p>
+<br>
+<p>Código:</p>
+<pre><code>
+import cv2
+import numpy as np
+from scipy import ndimage
+from skimage import data
+import matplotlib.pyplot as plt
+
+#imagem
+img = data.camera()
+
+#algoritimo
+vertical = cv2.Sobel(img,cv2.CV_64F,1,0,ksize=5)
+horizontal = cv2.Sobel(img,cv2.CV_64F,0,1,ksize=5)
+final_img = cv2.addWeighted(abs(vertical), 0.5, abs(horizontal), 0.5,0)
+
+#imprime as imagens
+fig = plt.figure(figsize=(5, 5))
+fig.add_subplot(1, 2, 1)
+plt.imshow(img,cmap='gray')
+plt.title('original')
+fig.add_subplot(1, 2, 2)
+plt.imshow(final_img,cmap='gray')
+plt.title('após filtro')
+plt.show()
+</code></pre>
+<br>
+<p>Resultado: </p>
+<img src="images/aula_10_sobel.png"><br>
+<p>Como pode ver, ele sofre bem menos com ruido </p>
+<p> Referências: </p>
+<a href='https://lapix.ufsc.br/metodos-no-domino-do-espaco-2-deteccao-de-bordas/'> https://lapix.ufsc.br/metodos-no-domino-do-espaco-2-deteccao-de-bordas/</a><br>
+<a href='https://stackoverflow.com/questions/42802352/sobel-edge-detection-in-python-and-opencv'> https://stackoverflow.com/questions/42802352/sobel-edge-detection-in-python-and-opencv</a><br>
+<a href='https://www.geeksforgeeks.org/python-program-to-detect-the-edges-of-an-image-using-opencv-sobel-edge-detection/?ref=rp'> https://www.geeksforgeeks.org/python-program-to-detect-the-edges-of-an-image-using-opencv-sobel-edge-detection/?ref=rp</a><br><br>
+
 </body>
 </html>
