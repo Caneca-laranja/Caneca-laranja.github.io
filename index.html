@@ -213,13 +213,16 @@ final_img = np.sqrt( np.square(horizontal) + np.square(vertical))
 fig = plt.figure(figsize=(5, 5))
 fig.add_subplot(1, 2, 1)
 plt.imshow(img,cmap='gray')
+plt.title('original')
 fig.add_subplot(1, 2, 2)
 plt.imshow(final_img,cmap='gray')
+plt.title('após filtro')
 plt.show()
 </code></pre>
 <br>
 <p>Resultado</p>
 <img src="images/aula_10_robert.png"><br>
+<p> Como se pode observar, o gradiente é muito sensível ao ruido da imagem</p><br>
 <p>referências:</p>
 <a href='https://lapix.ufsc.br/metodos-no-domino-do-espaco-2-deteccao-de-bordas/'> https://lapix.ufsc.br/metodos-no-domino-do-espaco-2-deteccao-de-bordas/</a><br>
 <a href='https://homepages.inf.ed.ac.uk/rbf/HIPR2/roberts.htm'> https://homepages.inf.ed.ac.uk/rbf/HIPR2/roberts.htm</a><br>
