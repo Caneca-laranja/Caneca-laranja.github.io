@@ -270,6 +270,50 @@ plt.show()
 <a href='https://lapix.ufsc.br/metodos-no-domino-do-espaco-2-deteccao-de-bordas/'> https://lapix.ufsc.br/metodos-no-domino-do-espaco-2-deteccao-de-bordas/</a><br>
 <a href='https://stackoverflow.com/questions/42802352/sobel-edge-detection-in-python-and-opencv'> https://stackoverflow.com/questions/42802352/sobel-edge-detection-in-python-and-opencv</a><br>
 <a href='https://www.geeksforgeeks.org/python-program-to-detect-the-edges-of-an-image-using-opencv-sobel-edge-detection/?ref=rp'> https://www.geeksforgeeks.org/python-program-to-detect-the-edges-of-an-image-using-opencv-sobel-edge-detection/?ref=rp</a><br><br>
+<p class = "subtitulo">Gradiente Prewitt</p>
+<p>Algoritimo de detecção de borda, parecido com o de Sobel, mas com 3 matrizes, sendo que 1 delas é rotacionada em 90 graus 3 vezes, o que faz com que seja 8 matrizes</p>
+<p> Vantagens: </p>
+<p>- Ainda mais preciso</p>
+<p> Desvantagens:</p>
+<p>- Ainda mias complxo</p>
+<br>
+<p>Código:</p>
+<pre><code>
+import cv2
+import numpy as np
+from scipy import ndimage
+from skimage import data
+import matplotlib.pyplot as plt
 
+#imagem
+img = data.camera()
+
+#matriz
+wit_x = np.array([ [1,1,1], [0,0,0], [-1,-1,-1] ])
+wit_y = np.array([ [-1,0,1], [-1,0,1], [-1,0,1] ])
+
+#algoritimo
+vertical = cv2.filter2D(img, -1, wit_x)
+horizontal = cv2.filter2D(img, -1, wit_y)
+final_img = vertical+horizontal
+
+#imprime as imagens
+fig = plt.figure(figsize=(5, 5))
+fig.add_subplot(1, 2, 1)
+plt.imshow(img,cmap='gray')
+plt.title('original')
+fig.add_subplot(1, 2, 2)
+plt.imshow(final_img,cmap='gray')
+plt.title('após filtro')
+plt.show()
+
+</code></pre>
+<br>
+<p>Resultado: </p>
+<img src="images/aula_10_prewitt.png"><br>
+<p>Melhor detecção de borda</p>
+<p> Referências: </p>
+<a href='https://lapix.ufsc.br/metodos-no-domino-do-espaco-2-deteccao-de-bordas/'> https://lapix.ufsc.br/metodos-no-domino-do-espaco-2-deteccao-de-bordas/</a><br>
+<a href='https://gist.github.com/rahit/c078cabc0a48f2570028bff397a9e154'>https://gist.github.com/rahit/c078cabc0a48f2570028bff397a9e154</a><br>
 </body>
 </html>
