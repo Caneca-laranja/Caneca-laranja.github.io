@@ -322,6 +322,8 @@ plt.show()
 
 Mostre um exemplo de código que usa cada API gráfica (pode ser um “Hello, World!” gráfico – renderizar um triângulo na tela), um exemplo de código de shader para cada API gráfica e um exemplo de aplicação que usa cada API gráfica.</p>
 <br>
+<p>Nota: não connsegui utilizar a biblioteca <GLFW/glfw3.h> e como ela é necessária para ambos as APIs utilizadas o código foi ego do site, mas não consegui executar</p>
+<br>
 <p class="subtitulo">OpenGL</p>
 <p>De acordo com a wiki: "OpenGL é o nome para uma especificação que descreve o comportamento de um sistema de renderização baseado em rasteirização"</p>
 <p>Por ser uma especificação ele não tem código fonte, e normalmente o vendedor de hardware que implementa as especificações e funcionalidades</p>
@@ -333,11 +335,12 @@ Mostre um exemplo de código que usa cada API gráfica (pode ser um “Hello, Wo
 <a ref="https://www.khronos.org/opengl/wiki/Rendering_Pipeline_Overview">imagem pega de</a>
 <br>
 <pre><code = "language-pascal">
+
 // CPP program to render a triangle using Shaders
-#include <GL\freeglut.h>
-#include <GL\glew.h>
-#include <iostream>
-#include <string>
+#include GL\freeglut.h
+#include GL\glew.h
+#include iostream
+#include string
 
 std::string vertexShader = "#version 430\n"
 						"in vec3 pos;"
@@ -358,7 +361,7 @@ GLuint compileShaders(std::string shader, GLenum type)
 	GLuint shaderId = glCreateShader(type);
 
 	if (shaderId == 0) { // Error: Cannot create shader object
-		std::cout << "Error creating shaders";
+		std::cout  "Error creating shaders";
 		return 0;
 	}
 
@@ -378,7 +381,7 @@ GLuint compileShaders(std::string shader, GLenum type)
 
 		// Get additional information
 		glGetShaderInfoLog(shaderId, length, &length, cMessage);
-		std::cout << "Cannot Compile Shader: " << cMessage;
+		std::cout "Cannot Compile Shader: "  cMessage;
 		delete[] cMessage;
 		glDeleteShader(shaderId);
 		return 0;
@@ -394,7 +397,7 @@ GLuint linkProgram(GLuint vertexShaderId, GLuint fragmentShaderId)
 	GLuint programId = glCreateProgram(); // create a program
 
 	if (programId == 0) {
-		std::cout << "Error Creating Shader Program";
+		std::cout "Error Creating Shader Program";
 		return 0;
 	}
 
@@ -411,7 +414,7 @@ GLuint linkProgram(GLuint vertexShaderId, GLuint fragmentShaderId)
 	glGetProgramiv(programId, GL_LINK_STATUS, &linkStatus);
 
 	if (!linkStatus) { // If the linking failed
-		std::cout << "Error Linking program";
+		std::cout "Error Linking program";
 		glDetachShader(programId, vertexShaderId);
 		glDetachShader(programId, fragmentShaderId);
 		glDeleteProgram(programId);
@@ -509,6 +512,81 @@ int main(int argc, char** argv)
 	return 0;
 }
 
+</pre></code>
+<a ref='https://www.geeksforgeeks.org/rendering-triangle-using-openglusing-shaders/'>Código pego de</a>
+<p>Nota: devido a conflitos com "<>", ele foi retirado no código </p>
+<br><br>
+<p class='subtitulo'>Vulkan</p>
+<p>De acordo com a wiki, Vulkan é "C99 API criado para controle explícito para gráficos de baixo nível e funcionalidade computacional".</p>
+<p>Nota: C99 é uma versão da liguagem C/C++</p>
+<p>Pipeline:</p>
+<img src="Vulkan.png">
+<a ref="https://www.khronos.org/registry/vulkan/specs/1.3-extensions/html/chap10.html">imagem pega de</a>
+<br>
+<pre><code>
+#define GLFW_INCLUDE_VULKAN
+#include GLFW/glfw3.h
+
+#include iostream
+#include stdexcept
+#include cstdlib
+
+const uint32_t WIDTH = 800;
+const uint32_t HEIGHT = 600;
+
+class HelloTriangleApplication {
+public:
+    void run() {
+        initWindow();
+        initVulkan();
+        mainLoop();
+        cleanup();
+    }
+
+private:
+    GLFWwindow* window;
+
+    void initWindow() {
+        glfwInit();
+
+        glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+
+        window = glfwCreateWindow(WIDTH, HEIGHT, "Vulkan", nullptr, nullptr);
+    }
+
+    void initVulkan() {
+
+    }
+
+    void mainLoop() {
+        while (!glfwWindowShouldClose(window)) {
+            glfwPollEvents();
+        }
+    }
+
+    void cleanup() {
+        glfwDestroyWindow(window);
+
+        glfwTerminate();
+    }
+};
+
+int main() {
+    HelloTriangleApplication app;
+
+    try {
+        app.run();
+    } catch (const std::exception& e) {
+        std::cerr  e.what()  std::endl;
+        return EXIT_FAILURE;
+    }
+
+    return EXIT_SUCCESS;
+}
 </code></pre>
+<p>Nota: devido a conflitos com "<>", ele foi retirado no código </p>
+<a ref="https://vulkan-tutorial.com/code/00_base_code.cpp">Código pego de</a>
+<br><br>
 </body>
 </html>
