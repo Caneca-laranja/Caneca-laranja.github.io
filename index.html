@@ -612,6 +612,29 @@ int main() {
 <br>
 <img src="images/transferir.jfif"/>
 <p>imagem pega de: https://www.google.com/url?sa=i&url=https%3A%2F%2Fsubscription.packtpub.com%2Fbook%2Fgraphics-programming%2F9781847195722%2F7%2Fch07lvl1sec09%2Fsummary&psig=AOvVaw28uhVWi30pD_qkqZErUPI4&ust=1652822832565000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCPj2sIP75PcCFQAAAAAdAAAAABAQ</p>
+<br><br><br><br>
+<p class="title">Aula 15</p>
+<p>Nessa semana, foi apresentada a seguinte pergunta durante a aula:
 
+	Por que obtemos resultados diferentes nas operações tex1 * tex2 e mul(tex1, tex2), considerando que tex1 e tex2 são duas texturas e que mul() é uma função da linguagem de shader HLSL?
+	
+	Faça uma pesquisa sobre as diferenças das duas operações e responda à pergunta acima.
+	
+	Inclua as referências usadas na pesquisa.
+	
+	Publique o resultado dessa atividade no seu blog e envie um arquivo txt contendo o link do seu blog com a publicação dessa atividade.</p>
+<br>
+<p>Resposta: </p>
+<p>A diferença parece ser que Tx1 * Tx2, multiplica os valores de Tx2 de cada linha e coluna pelo valor de linha e coluna de Tx1.</p>
+<p>Ex:</p>
+<p>Tx1 = [[1,1,1],[1,1,1],[0,0,1]]</p>
+<p>Tx2 = [[2,3,4]]</p>
+<p>Ficará: Tx3 = Tx1 * Tx2  => Tx3 = [[2,3,4],[2,3,4],[0,0,4]]</p>
+<p>Enquanto isso a função mul parece fazer a multiplicação matricial corretamente.</p>
+<p>Ex:</p>
+<p>Tx1 = [[1,1,1],[1,1,1],[0,0,1]]</p>
+<p>Tx2 = [[2,3,4]]</p>
+<p>Ficará: Tx3 = mul(Tx1,Tx2)  => Tx3 = [[5,5,9]]</p>
+<br><br><br>
 </body>
 </html>
